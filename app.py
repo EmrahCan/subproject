@@ -7,8 +7,8 @@ app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = "uploads/"
 translator = Translator()
 
-# async_mode'u "eventlet" olarak belirleyin
-socketio = SocketIO(app, async_mode="eventlet")
+# async_mode'u "eventlet" olarak belirledik ve CORS ayarını ekledik
+socketio = SocketIO(app, async_mode="eventlet", cors_allowed_origins="*")
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -50,8 +50,9 @@ def translate_srt(filepath, target_language):
             
             # İlerleme yüzdesini hesapla ve istemciye gönder
             progress = int((i + 1) / total_lines * 100)
+            print(f"Progress: {progress}%")  # Terminalde ilerlemeyi görmek için
             socketio.emit('progress', {'progress': progress})
-
+    
     return translated_text
 
 if __name__ == "__main__":
