@@ -1,0 +1,138 @@
+/* Genel stil ayarları */
+body {
+    font-family: Arial, sans-serif;
+    background: url('/static/movie-poster-background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Arka plan için bulanıklık ve koyu katman */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Daha koyu transparan katman */
+    backdrop-filter: blur(5px);
+    z-index: 1;
+}
+
+/* Ana kapsayıcı */
+.container {
+    text-align: center;
+    width: 400px;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s;
+    z-index: 2;
+    position: relative;
+}
+
+.container:hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Başlık ve açıklama */
+h1 {
+    font-size: 32px;
+    color: #ffd700; /* Altın rengi */
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9); /* Daha belirgin gölge */
+}
+
+p {
+    font-size: 16px;
+    color: #ffffff; /* Beyaz renk */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    margin-bottom: 20px;
+}
+
+/* Etiketler ve giriş alanları */
+.input-label {
+    font-weight: bold;
+    font-size: 14px;
+    display: block;
+    margin: 10px 0 5px;
+    color: #ffd700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.file-input,
+.language-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    color: #333; /* Daha koyu yazı rengi */
+    border: 2px solid #ffd700;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.file-input:focus,
+.language-select:focus {
+    border-color: #ffd700;
+    outline: none;
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+/* Gönderme düğmesi */
+.submit-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    background: linear-gradient(90deg, #ffd700, #ffa500);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.submit-button:hover {
+    background: linear-gradient(90deg, #ffa500, #ffd700);
+    transform: scale(1.02);
+}
+
+/* Yükleme mesajı */
+#loading-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffd700;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Yükleme animasyonu */
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ddd;
+    border-top: 4px solid #ffd700;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
